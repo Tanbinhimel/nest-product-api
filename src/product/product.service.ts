@@ -50,6 +50,12 @@ export class ProductService {
     return { product: updatedProduct };
   }
 
+  removeProduct(id: string) {
+    const { index } = this.findProduct(id);
+    this.products.splice(index, 1);
+    return { id: id };
+  }
+
   private findProduct(id): { product: Product; index: number } {
     const productIndex = this.products.findIndex(
       (product) => product.id === id,
